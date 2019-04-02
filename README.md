@@ -1,5 +1,13 @@
 # vue-snackbar
 
+### Install
+
+```shell
+$ npm i --save vue-snackbar
+```
+
+### Usage
+
 ```js
 // app.vue
 
@@ -31,10 +39,19 @@ export default {
 </script>
 ```
 
-### Disclaimer
+### Methods
 
-This is a work in progress and as it stands today, it depends on `bootstrap 4.x`.
+```js
+this.$snackbar.show({
+    message: 'Hooray!',
+    primaryAction: {
+        description: `I'm a button`,
+        action: () => alert('hello')
+    }
+})
 
+this.$snackbar.hide()
+```
 
 ### License
 

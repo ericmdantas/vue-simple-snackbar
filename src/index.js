@@ -1,7 +1,7 @@
 import VueSnackbar, {snackbar} from './snackbar.vue'
 
 export default {
-    install(Vue, options = {}) {
+    install(Vue) {
         Vue.prototype.$snackbar = {
             show(opts) {
                 snackbar.show(opts)

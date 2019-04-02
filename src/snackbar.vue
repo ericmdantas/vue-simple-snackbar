@@ -1,5 +1,5 @@
 <template>
-    <div class="snackbar" v-show="cfgSnackbar.visible" :class="{'snackbar-com-action': cfgSnackbar.primaryAction.description}">
+    <div class="snackbar" v-show="cfgSnackbar.visible" :class="{'snackbar-with-action': cfgSnackbar.primaryAction.description}">
         <div class="snackbar-description-container">
             <p class="snackbar-description" v-html="cfgSnackbar.message"></p>
         </div>
@@ -15,58 +15,86 @@
 </template>
 
 <script>
-const noop = () => {}
+import {Bus} from 'ubus'
+const ubus = new Bus()
+const busEvents = {
+    SHOW: 'snackbar.show',
+    HIDE: 'snackbar.hide',
+}
 
-export const snackbarService = {
-    show(obj) {
-        if (!obj) {
+export const snackbar = {
+    show(cfg) {
+        if (!cfg) {
             return
         }
 
-        Object.assign(obj, {visible: true})
+        Object.assign(cfg, {visible: true})
 
-        if (!obj.primaryAction) {
-            obj.primaryAction = {
+        if (!cfg.primaryAction) {
+            cfg.primaryAction = {
                 description: '',
-                action: noop,
+                action: () => {},
             }            
         }
 
-        // show snackbar
+        ubus.emit(busEvents.SHOW, cfg)
     },
     hide() {
-        // hide snackbar
+        ubus.emit(busEvents.HIDE)
     },
 }
 export default {
-    
+    data() {
+        return {
+            cfgSnackbar: {
+                message: '',
+                visible: false,
+                primaryAction: {
+                    description: '',
+                    action: () => {},
+                },
+            },
+        }
+    },
+    methods: {        
+        hide() {
+            this.cfgSnackbar.visible = false
+        },
+    },
+    mounted() {
+        ubus.on(busEvents.SHOW, (cfg) => {
+            Object.assign(this.cfgSnackbar, cfg)
+        })
+
+        ubus.on(busEvents.HIDE, () => {
+            this.cfgSnackbar.visible = false
+        })
+    },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../../comum/styles/blo_webapp_constantes.scss";
-
-$espacamento-default: 15px;
-$border-radius-default: 4px;
+$default-spacing: 15px;
+$default-border-radius: 4px;
 $width-medium-device: 768px;
 
 .snackbar {
     position: fixed;
-    left: $espacamento-default;
-    right: $espacamento-default;
+    left: $default-spacing;
+    right: $default-spacing;
     bottom: 15px;
     width: calc(100% - 30px);
     background-color: #323232;
-    border-radius: $border-radius-default;
+    border-radius: $default-border-radius;
     z-index: 1;
 
     &.snackbar-has-action .snackbar-description-container {
-        padding: $espacamento-default $espacamento-default 0 $espacamento-default;
+        padding: $default-spacing $default-spacing 0 $default-spacing;
     }
 
     .snackbar-description-container {
         float: left;
-        padding: $espacamento-default;
+        padding: $default-spacing;
 
         .snackbar-description {
             color: #e0e0e0;
@@ -74,7 +102,7 @@ $width-medium-device: 768px;
         }
 
         @media(min-width: $width-medium-device) {
-            padding: $espacamento-default;
+            padding: $default-spacing;
         }
     }
 
