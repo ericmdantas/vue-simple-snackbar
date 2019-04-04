@@ -44,6 +44,7 @@ export const snackbar = {
     },
 }
 export default {
+    name: 'snackbar',
     data() {
         return {
             cfgSnackbar: {

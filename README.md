@@ -1,5 +1,7 @@
 # vue-snackbar
 
+[![Build](https://travis-ci.org/ericmdantas/vue-snackbar.svg?branch=master)](https://travis-ci.org/ericmdantas/vue-snackbar)
+
 ### Install
 
 ```shell
