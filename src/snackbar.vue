@@ -1,5 +1,5 @@
 <template>
-    <div class="snackbar" v-show="cfgSnackbar.visible" :class="{'snackbar-with-action': cfgSnackbar.primaryAction.description}">
+    <div class="snackbar" :class="{'hidden': !cfgSnackbar.visible, 'snackbar-with-action': cfgSnackbar.primaryAction.description}">
         <div class="snackbar-description-container">
             <p class="snackbar-description" v-html="cfgSnackbar.message"></p>
         </div>
@@ -87,7 +87,13 @@ $width-medium-device: 768px;
     width: calc(100% - 30px);
     background-color: #323232;
     border-radius: $default-border-radius;
+    transition: bottom .3s ease;
+    will-change: bottom;
     z-index: 1;
+
+    &.hidden {
+        bottom: -999px;
+    }
 
     &.snackbar-has-action .snackbar-description-container {
         padding: $default-spacing $default-spacing 0 $default-spacing;
