@@ -15,7 +15,7 @@ $ npm i --save vue-snackbar
 
 <template>
     <div>   
-        <snackbar></snackbar>
+        <Snackbar />
     </div>
 </template>
 
@@ -32,8 +32,8 @@ export default {
                 message: 'Hooray!',
                 primaryAction: {
                     description: `I'm a button`,
-                    action: () => alert('hello')
-                }
+                    action: () => alert('hello'),
+                },
             })
         }, 1000)
     }
