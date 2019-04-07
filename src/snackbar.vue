@@ -17,6 +17,7 @@
 <script>
 import {Bus} from 'ubus'
 const ubus = new Bus()
+const TIME_TO_HIDE = 10000
 const busEvents = {
     SHOW: 'snackbar.show',
     HIDE: 'snackbar.hide',
@@ -47,6 +48,7 @@ export default {
     name: 'Snackbar',
     data() {
         return {
+            idTimeoutSnackbar: 0,
             cfgSnackbar: {
                 message: '',
                 visible: false,
@@ -59,16 +61,21 @@ export default {
     },
     methods: {        
         hide() {
-            this.cfgSnackbar.visible = false
+            clearTimeout(this.idTimeoutSnackbar)
+            this.cfgSnackbar.visible = false            
         },
     },
     mounted() {
         ubus.on(busEvents.SHOW, (cfg) => {
             Object.assign(this.cfgSnackbar, cfg)
+
+            this.idTimeoutSnackbar = setTimeout(() => {
+                this.hide()
+            }, TIME_TO_HIDE)
         })
 
         ubus.on(busEvents.HIDE, () => {
-            this.cfgSnackbar.visible = false
+            this.hide()
         })
     },
 }
