@@ -14,3 +14,5 @@ export default {
         Vue.component(VueSimpleSnackbar.name, VueSimpleSnackbar)
     }
 }
+
+export const simpleSnackbar = snackbar

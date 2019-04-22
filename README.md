@@ -8,7 +8,7 @@
 $ npm i --save vue-simple-snackbar
 ```
 
-### Usage
+### Usage in components
 
 ```js
 // app.vue
@@ -28,7 +28,7 @@ Vue.use(VueSimpleSnackbar)
 export default {
     mounted() {
         setTimeout(() => {
-            this.$snackbar.show({
+            this.$simpleSnackbar.show({
                 message: 'Hooray!',
                 primaryAction: {
                     description: `I'm a button`,
@@ -41,10 +41,29 @@ export default {
 </script>
 ```
 
+### Usage in other files
+
+```js
+// my_service.js
+import {simpleSnackbar} from 'vue-simple-snackbar'
+
+export default {
+    doSomething() {
+        simpleSnackbar.show({
+            message: 'Hooray!',
+            primaryAction: {
+                description: `I'm a button`,
+                action: () => alert('hello'),
+            },
+        })
+    }
+}
+```
+
 ### Methods
 
 ```js
-this.$snackbar.show({
+this.$simpleSnackbar.show({
     message: 'Hooray!',
     primaryAction: {
         description: `I'm a button`,
@@ -52,7 +71,7 @@ this.$snackbar.show({
     }
 })
 
-this.$snackbar.hide()
+this.$simpleSnackbar.hide()
 ```
 
 ### License
