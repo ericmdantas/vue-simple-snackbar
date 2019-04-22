@@ -5,7 +5,7 @@ module.exports = {
   mode: 'production',
   entry: path.resolve(__dirname, '../src/index.js'),
   output: {
-    library: 'vue-snackbar',
+    library: 'vue-simple-snackbar',
     libraryTarget: 'umd',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',

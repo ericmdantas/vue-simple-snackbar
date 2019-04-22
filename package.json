@@ -1,5 +1,5 @@
 {
-  "name": "vue-snackbar",
+  "name": "vue-simple-snackbar",
   "version": "0.0.1",
   "description": "A snackbar for vue2+ projects",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ericmdantas/vue-snackbar.git"
+    "url": "git+https://github.com/ericmdantas/vue-simple-snackbar.git"
   },
   "dependencies": {
     "@babel/core": "^7.2.0",
@@ -47,7 +47,7 @@
   "author": "Eric Mendes Dantas",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ericmdantas/vue-snackbar/issues"
+    "url": "https://github.com/ericmdantas/vue-simple-snackbar/issues"
   },
-  "homepage": "https://github.com/ericmdantas/vue-snackbar#readme"
+  "homepage": "https://github.com/ericmdantas/vue-simple-snackbar#readme"
 }

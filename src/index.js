@@ -1,4 +1,4 @@
-import VueSnackbar, {snackbar} from './snackbar.vue'
+import VueSimpleSnackbar, {snackbar} from './snackbar.vue'
 
 export default {
     install(Vue) {
@@ -11,6 +11,6 @@ export default {
             }
         }
 
-        Vue.component(VueSnackbar.name, VueSnackbar)
+        Vue.component(VueSimpleSnackbar.name, VueSimpleSnackbar)
     }
 }

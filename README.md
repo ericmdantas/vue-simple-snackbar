@@ -1,11 +1,11 @@
-# vue-snackbar
+# vue-simple-snackbar
 
-[![Build](https://travis-ci.org/ericmdantas/vue-snackbar.svg?branch=master)](https://travis-ci.org/ericmdantas/vue-snackbar)
+[![Build](https://travis-ci.org/ericmdantas/vue-simple-snackbar.svg?branch=master)](https://travis-ci.org/ericmdantas/vue-simple-snackbar)
 
 ### Install
 
 ```shell
-$ npm i --save vue-snackbar
+$ npm i --save vue-simple-snackbar
 ```
 
 ### Usage
@@ -15,15 +15,15 @@ $ npm i --save vue-snackbar
 
 <template>
     <div>   
-        <Snackbar />
+        <SimpleSnackbar />
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import VueSnackbar from 'vue-snackbar'
+import VueSimpleSnackbar from 'vue-simple-snackbar'
 
-Vue.use(VueSnackbar)
+Vue.use(VueSimpleSnackbar)
 
 export default {
     mounted() {

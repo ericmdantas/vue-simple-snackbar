@@ -45,7 +45,7 @@ export const snackbar = {
     },
 }
 export default {
-    name: 'Snackbar',
+    name: 'SimpleSnackbar',
     data() {
         return {
             idTimeoutSnackbar: 0,

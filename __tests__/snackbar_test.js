@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import {createLocalVue} from '@vue/test-utils'
-import VueSnackbarIndex from '../src/index'
-import VueSnackbarVue, {snackbar} from '../src/snackbar.vue'
+import VueSimpleSnackbarIndex from '../src/index'
+import VueSimpleSnackbarVue, {snackbar} from '../src/snackbar.vue'
 
 describe("snackbar", () => {
     describe("external", () => {
@@ -9,7 +9,7 @@ describe("snackbar", () => {
             it("should create the methods correctly", () => {
                 const localVue = createLocalVue()
 
-                localVue.use(VueSnackbarIndex)
+                localVue.use(VueSimpleSnackbarIndex)
 
                 expect(localVue.prototype.$snackbar).toBeDefined()
                 expect(typeof localVue.prototype.$snackbar.show).toBe('function')
@@ -21,11 +21,11 @@ describe("snackbar", () => {
     describe("internal", () => {
         describe("creation", () => {
             it("should have the right name", () => {
-                expect(VueSnackbarVue.name).toBe('Snackbar')
+                expect(VueSimpleSnackbarVue.name).toBe('SimpleSnackbar')
             })
 
             it("should have the right data()", () => {
-                const vm = new Vue(VueSnackbarVue).$mount()
+                const vm = new Vue(VueSimpleSnackbarVue).$mount()
 
                 expect(vm.cfgSnackbar).toEqual({
                     message: '',
@@ -41,7 +41,7 @@ describe("snackbar", () => {
         describe("methods", () => {
             describe("hide", () => {
                 it("should set the cfgSnackbar visible to false", () => {
-                    const vm = new Vue(VueSnackbarVue).$mount()
+                    const vm = new Vue(VueSimpleSnackbarVue).$mount()
 
                     expect(vm.cfgSnackbar.visible).toBe(false)
 
@@ -57,7 +57,7 @@ describe("snackbar", () => {
         describe("mounted", () => {
             describe("show", () => {
                 it("should show the cfgSnackbar correcly", () => {
-                    const vm = new Vue(VueSnackbarVue).$mount()
+                    const vm = new Vue(VueSimpleSnackbarVue).$mount()
 
                     snackbar.show({
                         message: 'abc',
