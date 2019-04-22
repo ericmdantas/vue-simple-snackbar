@@ -11,9 +11,9 @@ describe("snackbar", () => {
 
                 localVue.use(VueSimpleSnackbarIndex)
 
-                expect(localVue.prototype.$snackbar).toBeDefined()
-                expect(typeof localVue.prototype.$snackbar.show).toBe('function')
-                expect(typeof localVue.prototype.$snackbar.hide).toBe('function')
+                expect(localVue.prototype.$simpleSnackbar).toBeDefined()
+                expect(typeof localVue.prototype.$simpleSnackbar.show).toBe('function')
+                expect(typeof localVue.prototype.$simpleSnackbar.hide).toBe('function')
             })
         })
     })
