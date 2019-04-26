@@ -17,7 +17,7 @@
 <script>
 import {Bus} from 'ubus'
 const ubus = new Bus()
-const TIME_TO_HIDE = 10000
+const TIME_TO_HIDE = 30000
 const busEvents = {
     SHOW: 'snackbar.show',
     HIDE: 'snackbar.hide',
