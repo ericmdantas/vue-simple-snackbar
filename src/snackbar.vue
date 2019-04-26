@@ -90,7 +90,7 @@ $width-medium-device: 768px;
     position: fixed;
     left: $default-spacing;
     right: $default-spacing;
-    bottom: 15px;
+    bottom: 75px;
     width: calc(100% - 30px);
     background-color: #323232;
     border-radius: $default-border-radius;
@@ -134,6 +134,7 @@ $width-medium-device: 768px;
     }
 
     @media(min-width: $width-medium-device) {
+        bottom: 15px;
         max-width: 500px;
     }
 }
