@@ -30,6 +30,7 @@ export default {
         setTimeout(() => {
             this.$simpleSnackbar.show({
                 message: 'Hooray!',
+                timeToHide: 30000,
                 primaryAction: {
                     description: `I'm a button`,
                     action: () => alert('hello'),

@@ -29,7 +29,7 @@ export const snackbar = {
             return
         }
 
-        Object.assign(cfg, {visible: true})
+        cfg = Object.assign({timeToHide: TIME_TO_HIDE}, cfg, {visible: true})
 
         if (!cfg.primaryAction) {
             cfg.primaryAction = {
@@ -52,6 +52,7 @@ export default {
             cfgSnackbar: {
                 message: '',
                 visible: false,
+                timeToHide: TIME_TO_HIDE,
                 primaryAction: {
                     description: '',
                     action: () => {},
@@ -71,7 +72,7 @@ export default {
 
             this.idTimeoutSnackbar = setTimeout(() => {
                 this.hide()
-            }, TIME_TO_HIDE)
+            }, this.cfgSnackbar.timeToHide)
         })
 
         ubus.on(busEvents.HIDE, () => {

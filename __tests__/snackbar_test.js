@@ -27,9 +27,12 @@ describe("snackbar", () => {
             it("should have the right data()", () => {
                 const vm = new Vue(VueSimpleSnackbarVue).$mount()
 
+                const TIME_TO_HIDE_DEFAULT = 30000
+
                 expect(vm.cfgSnackbar).toEqual({
                     message: '',
                     visible: false,
+                    timeToHide: TIME_TO_HIDE_DEFAULT,
                     primaryAction: {
                         description: '',
                         action: expect.any(Function),
@@ -61,6 +64,7 @@ describe("snackbar", () => {
 
                     snackbar.show({
                         message: 'abc',
+                        timeToHide: 10000,
                         primaryAction: {
                             description: 'x',
                             action: () => {},
@@ -70,6 +74,7 @@ describe("snackbar", () => {
                     expect(vm.cfgSnackbar).toEqual({
                         message: 'abc',
                         visible: true,
+                        timeToHide: 10000,
                         primaryAction: {
                             description: 'x',
                             action: expect.any(Function),
